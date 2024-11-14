@@ -12,3 +12,7 @@ This example shows how to secure your bull-board using local passport strategy.
    the `session` cookie automatically to **each** request.
 
 Based on: https://github.com/passport/express-4.x-local-example/blob/master/server.js
+
+## Docker Hub
+
+Image: [valmirphp/bull-board-ui-docker](https://hub.docker.com/r/valmirphp/bull-board-ui-docker)

@@ -10,7 +10,7 @@ const config = {
     port: process.env.REDIS_PORT || 6379,
     host: process.env.REDIS_HOST || 'localhost',
     password: process.env.REDIS_PASSWORD || '',
-    tls: process.env.REDIS_TLS === 'true',
+    db: process.env.REDIS_DB || 0,
   },
   uiConfig: {
     boardTitle: process.env.APP_TITLE || 'Bull Board',
