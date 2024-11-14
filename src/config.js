@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const config = {
   auth: {
+    disable: process.env.AUTH_DISABLE === 'true',
     username: process.env.AUTH_USERNAME || 'bull',
     password: process.env.AUTH_PASSWORD || 'board',
   },
@@ -12,12 +13,14 @@ const config = {
     tls: process.env.REDIS_TLS === 'true',
   },
   uiConfig: {
-    boardTitle: process.APP_TITLE || 'Bull Board',
+    boardTitle: process.env.APP_TITLE || 'Bull Board',
     boardLogo: process.env.LOGO_SRC ? {
       path: process.env.LOGO_SRC,
       width: process.env.LOGO_WIDTH || 90,
     } : undefined,
   },
+  queueNames: process.env.QUEUE_NAMES ? process.env.QUEUE_NAMES.split(',') : [],
+  queueMqNames: process.env.QUEUE_MQ_NAMES ? process.env.QUEUE_MQ_NAMES.split(',') : []
 };
 
 module.exports = config;

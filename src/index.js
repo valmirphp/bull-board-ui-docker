@@ -54,8 +54,8 @@ const createAdapterMQ = (queue) => new BullMQAdapter(createQueueMQ(queue), {allo
 
 const createQueues = () => {
   return [
-    createAdapter('ExampleBull'),
-    createAdapterMQ('ExampleBullMQ'),
+    ...config.queueNames.map(createAdapter),
+    ...config.queueMqNames.map(createAdapterMQ),
   ];
 }
 
@@ -76,7 +76,7 @@ const run = async () => {
 
   const app = express();
   // Configure view engine to render EJS templates.
-  app.set('views', __dirname + '/views');
+  app.set('views', __dirname + '/../views');
   app.set('view engine', 'ejs');
 
   app.use(session({secret: 'keyboard cat', saveUninitialized: true, resave: true}));
@@ -98,7 +98,15 @@ const run = async () => {
     }
   );
 
-  app.use('/ui', ensureLoggedIn({redirectTo: '/ui/login'}), serverAdapter.getRouter());
+  if (config.auth.disable) {
+    app.use('/ui', serverAdapter.getRouter());
+  } else {
+    app.use('/ui', ensureLoggedIn({redirectTo: '/ui/login'}), serverAdapter.getRouter());
+  }
+
+  app.use('/', (req, res) => {
+    res.redirect('/ui');
+  });
 
   app.listen(3000, () => {
     console.log('🚀 Running on 3000...');

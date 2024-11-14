@@ -1,14 +1,12 @@
 {
-  "name": "bull-board-auth-example",
+  "name": "@valmirphp/bull-board-ui-docker",
   "version": "1.0.0",
-  "description": "Example of how to use passport.js & custom login page with bull-board",
-  "main": "index.js",
+  "description": "Express how to use passport.js & custom login page with bull-board",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
-  "author": "felixmosh",
-  "license": "ISC",
+  "author": "Valmir B",
   "dependencies": {
     "@bull-board/express": "^6.0.0",
     "body-parser": "^1.20.3",
@@ -21,5 +19,5 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@4.5.1"
 }
