@@ -46,10 +46,10 @@ passport.deserializeUser((user, cb) => {
 });
 
 const createQueue = (name) => new Queue(name, {redis: config.redis});
-const createAdapter = (name) => new BullAdapter(createQueue(name), {allowRetries: true, readOnlyMode: true});
+const createAdapter = (name) => new BullAdapter(createQueue(name), config.queueAdapterConfig);
 
 const createQueueMQ = (name) => new QueueMQ(name, {connection: config.redis});
-const createAdapterMQ = (queue) => new BullMQAdapter(createQueueMQ(queue), {allowRetries: true, readOnlyMode: true});
+const createAdapterMQ = (queue) => new BullMQAdapter(createQueueMQ(queue), config.queueAdapterConfig);
 
 
 const createQueues = () => {

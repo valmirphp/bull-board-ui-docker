@@ -19,6 +19,10 @@ const config = {
       width: process.env.LOGO_WIDTH || 90,
     } : undefined,
   },
+  queueAdapterConfig: {
+    allowRetries: process.env.QUEUE_ALLOW_RETRIES !== 'false',
+    readOnlyMode: process.env.QUEUE_READ_ONLY_MODE === 'true',
+  },
   queueNames: process.env.QUEUE_NAMES ? process.env.QUEUE_NAMES.split(',') : [],
   queueMqNames: process.env.QUEUE_MQ_NAMES ? process.env.QUEUE_MQ_NAMES.split(',') : []
 };
